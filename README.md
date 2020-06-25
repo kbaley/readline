@@ -1,6 +1,12 @@
-[![Windows build status](https://ci.appveyor.com/api/projects/status/github/tonerdo/readline?branch=master&svg=true)](https://ci.appveyor.com/project/tonerdo/readline)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![NuGet version](https://badge.fury.io/nu/ReadLine.svg)](https://www.nuget.org/packages/ReadLine)
+A fork of https://github.com/tonerdo/readline with two changes:
+
+- The default value sent to `.Read` will be written to the console so the user can see what it is
+- `BypassMode = true` will override the UpArrow and DownArrow key handlers:
+  - If the entered value is a date, it will adjust the date up or down a day. The date format is hard-coded for now so if you enter `March 23, 2020`, it will change the format to whatever `ToShortDateString` returns
+  - If the entered value is an int, it will adjust the value up and down by 1
+
+Rest of the readme is taken from https://github.com/tonerdo/readline.
+
 # ReadLine
 
 ReadLine is a [GNU Readline](https://en.wikipedia.org/wiki/GNU_Readline) like library built in pure C#. It can serve as a drop in replacement for the inbuilt `Console.ReadLine()` and brings along
