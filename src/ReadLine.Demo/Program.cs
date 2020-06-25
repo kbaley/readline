@@ -14,8 +14,9 @@ namespace ConsoleApplication
             ReadLine.AddHistory(history);
 
             ReadLine.AutoCompletionHandler = new AutoCompletionHandler();
+            ReadLine.BypassMode = true;
 
-            string input = ReadLine.Read("(prompt)> ");
+            string input = ReadLine.Read("(prompt)> ", DateTime.Today.ToShortDateString());
             Console.WriteLine(input);
 
             input = ReadLine.ReadPassword("Enter Password> ");

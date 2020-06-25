@@ -20,10 +20,13 @@ namespace System
         public static bool HistoryEnabled { get; set; }
         public static IAutoCompleteHandler AutoCompletionHandler { private get; set; }
 
+        public static bool BypassMode { get; set; } = false;
+
         public static string Read(string prompt = "", string @default = "")
         {
             Console.Write(prompt);
-            KeyHandler keyHandler = new KeyHandler(new Console2(), _history, AutoCompletionHandler);
+            KeyHandler keyHandler = new KeyHandler(new Console2(), _history, AutoCompletionHandler, 
+                BypassMode, @default);
             string text = GetText(keyHandler);
 
             if (String.IsNullOrWhiteSpace(text) && !String.IsNullOrWhiteSpace(@default))

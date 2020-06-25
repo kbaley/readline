@@ -1,20 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <AssemblyTitle>ReadLine</AssemblyTitle>
+    <AssemblyTitle>ReadLine2</AssemblyTitle>
     <AssemblyDescription>A GNU-Readline like library for .NET/.NET Core</AssemblyDescription>
-    <AssemblyVersion>2.0.1</AssemblyVersion>
-    <Authors>Toni Solarin-Sodara</Authors>
+    <AssemblyVersion>0.0.3</AssemblyVersion>
+    <Authors>Toni Solarin-Sodara, Kyle Baley</Authors>
     <TargetFramework>netstandard2.0</TargetFramework>
     <DebugType>portable</DebugType>
-    <AssemblyName>ReadLine</AssemblyName>
-    <PackageId>ReadLine</PackageId>
+    <AssemblyName>ReadLine2</AssemblyName>
+    <PackageId>ReadLine2</PackageId>
     <PackageVersion>$(AssemblyVersion)</PackageVersion>
     <PackageTags>readline;gnu;console;shell;cui</PackageTags>
-    <PackageProjectUrl>https://github.com/tonerdo/readline</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/tonerdo/readline/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/kbaley/readline</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/kbaley/readline/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/tonerdo/readline</RepositoryUrl>
+    <RepositoryUrl>https://github.com/kbaley/readline</RepositoryUrl>
   </PropertyGroup>
 
 </Project>

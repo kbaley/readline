@@ -220,6 +220,26 @@ namespace Internal.ReadLine
             }
         }
 
+        private void PrevValue()
+        {
+            if (DateTime.TryParse(_text.ToString(), out var date)) {
+                // Should extract the exact format and use the same one but...
+                WriteNewString(date.AddDays(-1).ToShortDateString());
+            } else if (int.TryParse(_text.ToString(), out var number)) {
+                WriteNewString((number - 1).ToString());
+            }
+        }
+
+        private void NextValue()
+        {
+            if (DateTime.TryParse(_text.ToString(), out var date)) {
+                // Should extract the exact format and use the same one but...
+                WriteNewString(date.AddDays(1).ToShortDateString());
+            } else if (int.TryParse(_text.ToString(), out var number)) {
+                WriteNewString((number + 1).ToString());
+            }
+        }
+
         private void NextHistory()
         {
             if (_historyIndex < _history.Count)
@@ -246,7 +266,8 @@ namespace Internal.ReadLine
             }
         }
 
-        public KeyHandler(IConsole console, List<string> history, IAutoCompleteHandler autoCompleteHandler)
+        public KeyHandler(IConsole console, List<string> history, IAutoCompleteHandler autoCompleteHandler, 
+                bool bypassPrevNext = false, string @default = "")
         {
             Console2 = console;
 
@@ -273,6 +294,12 @@ namespace Internal.ReadLine
             _keyActions["ControlP"] = PrevHistory;
             _keyActions["DownArrow"] = NextHistory;
             _keyActions["ControlN"] = NextHistory;
+            if (bypassPrevNext) {
+                _keyActions["UpArrow"] = NextValue;
+                _keyActions["ControlP"] = NextValue;
+                _keyActions["DownArrow"] = PrevValue;
+                _keyActions["ControlN"] = PrevValue;
+            }
             _keyActions["ControlU"] = () =>
             {
                 while (!IsStartOfLine())
@@ -325,6 +352,10 @@ namespace Internal.ReadLine
                     PreviousAutoComplete();
                 }
             };
+
+            if (@default != "") {
+                WriteString(@default);
+            }
         }
 
         public void Handle(ConsoleKeyInfo keyInfo)
